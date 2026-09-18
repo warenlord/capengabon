@@ -3,6 +3,11 @@ import Footer from "@/components/Footer";
 import WhatsAppFloatButton from "@/components/WhatsAppFloatButton";
 import { getSiteInfo } from "@/lib/data";
 
+// The content layer (data/, or a persistent disk in production) is only
+// available at request time, not during `next build` — render the whole
+// public site on demand rather than pre-rendering it statically.
+export const dynamic = "force-dynamic";
+
 export default async function SiteLayout({ children }: { children: React.ReactNode }) {
   const siteInfo = await getSiteInfo();
 

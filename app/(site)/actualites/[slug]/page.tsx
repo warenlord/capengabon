@@ -4,12 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import Gallery from "@/components/Gallery";
-import { getPublishedNews, getNewsBySlug } from "@/lib/data";
-
-export async function generateStaticParams() {
-  const news = await getPublishedNews();
-  return news.map((n) => ({ slug: n.slug }));
-}
+import { getNewsBySlug } from "@/lib/data";
 
 export async function generateMetadata({
   params,

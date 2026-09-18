@@ -2,6 +2,10 @@ import type { MetadataRoute } from "next";
 import { getActiveProductions, getActiveProducts, getPublishedNews } from "@/lib/data";
 import { SITE_URL } from "@/lib/config";
 
+// Reads the content layer, which is only available at request time in
+// production (see app/(site)/layout.tsx) — generate this on demand too.
+export const dynamic = "force-dynamic";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [productions, products, news] = await Promise.all([
     getActiveProductions(),

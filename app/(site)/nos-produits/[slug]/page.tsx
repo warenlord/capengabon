@@ -4,13 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import Gallery from "@/components/Gallery";
-import { getActiveProducts, getProductBySlug, getSiteInfo } from "@/lib/data";
+import { getProductBySlug, getSiteInfo } from "@/lib/data";
 import { buildWhatsAppLink, productWhatsAppMessage } from "@/lib/whatsapp";
-
-export async function generateStaticParams() {
-  const products = await getActiveProducts();
-  return products.map((p) => ({ slug: p.slug }));
-}
 
 export async function generateMetadata({
   params,
