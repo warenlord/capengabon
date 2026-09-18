@@ -60,7 +60,7 @@ export default async function RejoindreCapenPage() {
           <Reveal delay={100} className="rounded-card bg-capen-cream p-6 shadow-card ring-1 ring-capen-ink/5 sm:p-8">
             <h2 className="font-display text-xl font-semibold text-capen-ink">Présentez-nous votre activité</h2>
             <div className="mt-6">
-              <Suspense fallback={<p className="text-sm text-capen-ink/50">Chargement du formulaire…</p>}>
+              <Suspense fallback={<p className="text-sm text-capen-ink/65">Chargement du formulaire…</p>}>
                 <ContactForm defaultIntent="rejoindre" />
               </Suspense>
             </div>

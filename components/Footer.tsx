@@ -25,7 +25,7 @@ export default async function Footer() {
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-capen-ink/50">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-capen-ink/65">
             Nos productions
           </h3>
           <ul className="mt-4 space-y-2.5 text-sm">
@@ -36,7 +36,7 @@ export default async function Footer() {
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-capen-ink/50">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-capen-ink/65">
             Nos produits
           </h3>
           <ul className="mt-4 space-y-2.5 text-sm">
@@ -46,7 +46,7 @@ export default async function Footer() {
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-capen-ink/50">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-capen-ink/65">
             Contact
           </h3>
           <ul className="mt-4 space-y-2.5 text-sm">
@@ -61,7 +61,7 @@ export default async function Footer() {
                   WhatsApp
                 </a>
               ) : (
-                <span className="text-capen-ink/40">WhatsApp — à venir</span>
+                <span className="text-capen-ink/65">WhatsApp — à venir</span>
               )}
             </li>
             <li>
@@ -70,7 +70,7 @@ export default async function Footer() {
                   {siteInfo.email}
                 </a>
               ) : (
-                <span className="text-capen-ink/40">E-mail — à venir</span>
+                <span className="text-capen-ink/65">E-mail — à venir</span>
               )}
             </li>
             <li><Link href="/contact" className="text-capen-ink/75 hover:text-capen-green-700">Formulaire de contact</Link></li>

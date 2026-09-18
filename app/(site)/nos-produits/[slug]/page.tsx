@@ -43,7 +43,7 @@ export default async function ProductDetailPage({
   return (
     <section className="section-y bg-capen-paper">
       <div className="container-capen">
-        <nav className="text-sm text-capen-ink/50">
+        <nav className="text-sm text-capen-ink/65">
           <Link href="/nos-produits" className="hover:text-capen-green-700">Nos produits</Link>
           <span className="mx-2">/</span>
           <span className="text-capen-ink/80">{product.nom}</span>

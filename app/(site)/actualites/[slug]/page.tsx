@@ -33,7 +33,7 @@ export default async function NewsDetailPage({
   return (
     <article className="section-y bg-capen-paper">
       <div className="container-capen max-w-3xl">
-        <Link href="/actualites" className="text-sm text-capen-ink/50 hover:text-capen-green-700">
+        <Link href="/actualites" className="text-sm text-capen-ink/65 hover:text-capen-green-700">
           ← Toutes les actualités
         </Link>
 

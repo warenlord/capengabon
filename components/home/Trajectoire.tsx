@@ -46,7 +46,7 @@ export default function Trajectoire() {
                   >
                     <span className="h-2.5 w-2.5 rounded-full bg-white" />
                   </span>
-                  <p className="text-sm font-semibold uppercase tracking-wide text-capen-ink/50">
+                  <p className="text-sm font-semibold uppercase tracking-wide text-capen-ink/65">
                     {etape.periode}
                   </p>
                   <p className="mt-2 font-display text-3xl font-semibold text-capen-ink">{etape.titre}</p>

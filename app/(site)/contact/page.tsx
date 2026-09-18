@@ -37,7 +37,7 @@ export default async function ContactPage() {
                   Nous contacter sur WhatsApp
                 </a>
               ) : (
-                <p className="mt-5 text-sm italic text-capen-ink/40">Numéro à venir</p>
+                <p className="mt-5 text-sm italic text-capen-ink/65">Numéro à venir</p>
               )}
             </Reveal>
 
@@ -54,7 +54,7 @@ export default async function ContactPage() {
                   <a href={`mailto:${siteInfo.email}`} className="btn-secondary mt-5">Nous écrire</a>
                 </>
               ) : (
-                <p className="mt-1.5 text-sm italic text-capen-ink/40">Adresse à venir</p>
+                <p className="mt-1.5 text-sm italic text-capen-ink/65">Adresse à venir</p>
               )}
             </Reveal>
 
@@ -71,7 +71,7 @@ export default async function ContactPage() {
           <Reveal delay={100} className="rounded-card bg-capen-cream p-6 shadow-card ring-1 ring-capen-ink/5 sm:p-8">
             <h2 className="font-display text-xl font-semibold text-capen-ink">Formulaire de contact</h2>
             <div className="mt-6">
-              <Suspense fallback={<p className="text-sm text-capen-ink/50">Chargement du formulaire…</p>}>
+              <Suspense fallback={<p className="text-sm text-capen-ink/65">Chargement du formulaire…</p>}>
                 <ContactForm />
               </Suspense>
             </div>
