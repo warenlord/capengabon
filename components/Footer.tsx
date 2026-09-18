@@ -79,7 +79,7 @@ export default async function Footer() {
       </div>
 
       <div className="border-t border-capen-ink/10">
-        <div className="container-capen flex flex-col gap-3 py-6 text-xs text-capen-ink/55 sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-capen flex flex-col gap-3 py-6 text-xs text-capen-ink/70 sm:flex-row sm:items-center sm:justify-between">
           <p>© CAPEN — {FOOTER_YEAR}</p>
           <div className="flex gap-5">
             <Link href="/mentions-legales" className="hover:text-capen-green-700">Mentions légales</Link>
