@@ -1,0 +1,26 @@
+[
+  {
+    "id": "prod-batons-manioc",
+    "nom": "Bâtons de manioc",
+    "slug": "batons-de-manioc",
+    "categorie": "Manioc transformé",
+    "description": "CAPEN commercialise des bâtons de manioc, préparés à partir du manioc cultivé et récolté sur nos parcelles. Ils sont proposés sous plusieurs formes et formats, selon les lots et les demandes. Les informations détaillées (formats, poids, conditionnements et tarifs) vous seront communiquées directement par notre équipe.",
+    "images": [
+      { "src": "/images/products/batons-manioc/preparation-01.jpg", "alt": "Manioc préparé, façonné en boules et en bâtons avant emballage" },
+      { "src": "/images/products/batons-manioc/peles-01.jpg", "alt": "Bâtons de manioc pelés, prêts pour le conditionnement" },
+      { "src": "/images/products/batons-manioc/emballage-01.jpg", "alt": "Bâtons de manioc conditionnés en feuille, plusieurs formats" },
+      { "src": "/images/products/batons-manioc/emballage-02.jpg", "alt": "Bâtons de manioc emballés, rangés avant expédition" },
+      { "src": "/images/products/batons-manioc/emballage-03.jpg", "alt": "Lots de bâtons de manioc conditionnés par CAPEN" }
+    ],
+    "format": "Plusieurs formats proposés (détails communiqués par notre équipe)",
+    "poids": null,
+    "conditionnement": "Conditionnement traditionnel en feuille, selon les lots",
+    "disponibilite": "À confirmer — contactez-nous pour connaître la disponibilité actuelle",
+    "prix": null,
+    "miseEnAvant": true,
+    "ordreAffichage": 1,
+    "actif": true,
+    "dateCreation": "2026-09-18T00:00:00.000Z",
+    "dateModification": "2026-09-18T00:00:00.000Z"
+  }
+]

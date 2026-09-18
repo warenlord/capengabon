@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background-color: #f8f6ef;
+  color: #211e19;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+  }
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+  ::selection {
+    background-color: #c3dfa8;
+    color: #233a15;
+  }
+}
+
+@layer components {
+  .container-capen {
+    @apply mx-auto w-full max-w-container px-5 sm:px-6 lg:px-8;
+  }
+
+  .section-y {
+    @apply py-14 sm:py-20 lg:py-24;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-[15px] font-semibold transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-capen-green-600 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn bg-capen-green-600 text-white shadow-card hover:bg-capen-green-700 hover:shadow-cardHover active:bg-capen-green-800;
+  }
+
+  .btn-secondary {
+    @apply btn bg-transparent text-capen-ink ring-1 ring-inset ring-capen-ink/20 hover:bg-capen-ink/5;
+  }
+
+  .btn-whatsapp {
+    @apply btn bg-[#25D366] text-white shadow-card hover:bg-[#1fb959] hover:shadow-cardHover;
+  }
+
+  .btn-earth {
+    @apply btn bg-capen-earth-500 text-white shadow-card hover:bg-capen-earth-600;
+  }
+
+  .eyebrow {
+    @apply text-sm font-semibold uppercase tracking-[0.14em] text-capen-green-600;
+  }
+
+  .card {
+    @apply rounded-card bg-capen-paper shadow-card ring-1 ring-capen-ink/5;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-sm font-medium text-capen-ink/80;
+  }
+
+  .field-input {
+    @apply w-full rounded-lg border border-capen-ink/15 bg-white px-3.5 py-2.5 text-[15px] text-capen-ink placeholder:text-capen-ink/35 focus:border-capen-green-500 focus:outline-none focus:ring-2 focus:ring-capen-green-500/20;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

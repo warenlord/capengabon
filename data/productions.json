@@ -1,0 +1,46 @@
+[
+  {
+    "id": "prod-banane",
+    "slug": "banane",
+    "nom": "Banane",
+    "resume": "Une production actuelle de CAPEN, cultivée et récoltée sur nos parcelles.",
+    "description": "La banane fait partie des deux productions actuellement confirmées de CAPEN, aux côtés du manioc. Elle est cultivée sur les parcelles exploitées par la coopérative, entretenue puis récoltée par l'équipe CAPEN avant d'être mise à disposition selon les besoins exprimés par nos clients et partenaires.",
+    "images": [
+      { "src": "/images/productions/banane/bananeraie-01.jpg", "alt": "Bananeraie de CAPEN, jeunes plants de bananier et de manioc en association" },
+      { "src": "/images/productions/banane/bananeraie-manioc-01.jpg", "alt": "Parcelle établie associant bananiers et manioc chez CAPEN" },
+      { "src": "/images/productions/banane/recolte-femme-portage-02.jpg", "alt": "Récolte de bananes plantain, régime porté à l'épaule" },
+      { "src": "/images/productions/banane/recolte-femme-portage-01.jpg", "alt": "Membre de CAPEN portant un régime de bananes fraîchement récolté" },
+      { "src": "/images/productions/banane/recolte-equipe-01.jpg", "alt": "Équipe CAPEN pendant la récolte des bananes" },
+      { "src": "/images/productions/banane/recolte-femme-01.jpg", "alt": "Récolte d'un régime de bananes sur la parcelle CAPEN" },
+      { "src": "/images/productions/banane/recolte-femme-02.jpg", "alt": "Membre de CAPEN tenant un régime de bananes plantain" },
+      { "src": "/images/productions/banane/regime-plantain-01.jpg", "alt": "Régime de bananes plantain fraîchement récolté" },
+      { "src": "/images/productions/banane/regimes-transport-01.jpg", "alt": "Régimes de bananes préparés pour le transport" },
+      { "src": "/images/productions/banane/regimes-transport-02.jpg", "alt": "Régimes de bananes groupés avant expédition" },
+      { "src": "/images/productions/banane/preparation-parcelle-01.jpg", "alt": "Préparation d'une parcelle pour la culture de la banane" },
+      { "src": "/images/productions/banane/preparation-parcelle-02.jpg", "alt": "Développement d'une nouvelle parcelle CAPEN" },
+      { "src": "/images/productions/banane/bananeraie-02.jpg", "alt": "Vue de la bananeraie CAPEN" }
+    ],
+    "statut": "Production actuelle",
+    "ordreAffichage": 1,
+    "actif": true
+  },
+  {
+    "id": "prod-manioc",
+    "slug": "manioc",
+    "nom": "Manioc",
+    "resume": "Une production actuelle de CAPEN, à la base de nos bâtons de manioc.",
+    "description": "Le manioc est la seconde production actuellement confirmée de CAPEN. Planté, entretenu puis récolté sur nos parcelles, il est ensuite préparé par l'équipe CAPEN qui en assure l'épluchage, la découpe et la transformation, notamment pour la fabrication de bâtons de manioc.",
+    "images": [
+      { "src": "/images/productions/manioc/plant-manioc-01.jpg", "alt": "Plant de manioc en développement sur une parcelle CAPEN" },
+      { "src": "/images/productions/manioc/recolte-pile-01.jpg", "alt": "Tas de racines de manioc fraîchement récoltées" },
+      { "src": "/images/productions/manioc/recolte-pile-02.jpg", "alt": "Récolte de manioc CAPEN" },
+      { "src": "/images/productions/manioc/recolte-femme-01.jpg", "alt": "Membre de CAPEN présentant des racines de manioc récoltées" },
+      { "src": "/images/productions/manioc/epluchage-01.jpg", "alt": "Épluchage des racines de manioc par l'équipe CAPEN" },
+      { "src": "/images/productions/manioc/epluchage-02.jpg", "alt": "Préparation du manioc, étape d'épluchage" },
+      { "src": "/images/productions/manioc/decoupe-01.jpg", "alt": "Manioc épluché et découpé avant transformation" }
+    ],
+    "statut": "Production actuelle",
+    "ordreAffichage": 2,
+    "actif": true
+  }
+]
