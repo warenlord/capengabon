@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getActiveProductions, getActiveProducts, getPublishedNews } from "@/lib/data";
+import { getActiveProductions, getActiveProducts, getActivePackagingArticles, getPublishedNews } from "@/lib/data";
 import { SITE_URL } from "@/lib/config";
 
 // Reads the content layer, which is only available at request time in
@@ -7,9 +7,10 @@ import { SITE_URL } from "@/lib/config";
 export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [productions, products, news] = await Promise.all([
+  const [productions, products, packagingArticles, news] = await Promise.all([
     getActiveProductions(),
     getActiveProducts(),
+    getActivePackagingArticles(),
     getPublishedNews(),
   ]);
 
@@ -39,10 +40,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(p.dateModification),
   }));
 
+  const packagingArticleRoutes = packagingArticles.map((a) => ({
+    url: `${SITE_URL}/packaging/articles/${a.slug}`,
+    lastModified: new Date(a.dateModification),
+  }));
+
   const newsRoutes = news.map((n) => ({
     url: `${SITE_URL}/actualites/${n.slug}`,
     lastModified: new Date(n.date),
   }));
 
-  return [...staticRoutes, ...productionRoutes, ...productRoutes, ...newsRoutes];
+  return [...staticRoutes, ...productionRoutes, ...productRoutes, ...packagingArticleRoutes, ...newsRoutes];
 }

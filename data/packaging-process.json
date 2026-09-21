@@ -1,0 +1,30 @@
+[
+  {
+    "id": "etape-besoin-devis",
+    "titre": "Besoin & devis",
+    "description": "Vous nous présentez votre besoin de conditionnement (type de produit, quantités, contraintes) et notre équipe vous propose les articles et la formule les plus adaptés.",
+    "ordreAffichage": 1,
+    "actif": true
+  },
+  {
+    "id": "etape-achat-location",
+    "titre": "Choix achat ou location",
+    "description": "Ensemble, nous déterminons si l'achat ou la location du matériel correspond le mieux à votre activité et à la durée de votre besoin.",
+    "ordreAffichage": 2,
+    "actif": true
+  },
+  {
+    "id": "etape-preparation",
+    "titre": "Préparation & conditionnement",
+    "description": "Notre équipe prépare et, selon les cas, livre le matériel ou les articles retenus, avec le même soin que pour nos propres produits.",
+    "ordreAffichage": 3,
+    "actif": true
+  },
+  {
+    "id": "etape-suivi",
+    "titre": "Suivi & réapprovisionnement",
+    "description": "Nous restons à votre écoute pour ajuster les quantités, renouveler une location ou réapprovisionner votre stock d'articles de conditionnement.",
+    "ordreAffichage": 4,
+    "actif": true
+  }
+]

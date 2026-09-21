@@ -47,6 +47,47 @@ export type NewsItem = {
   publie: boolean;
 };
 
+export type PackagingSupplier = {
+  id: string;
+  nom: string;
+  specialite: string | null;
+  contact: string | null;
+  telephone: string | null;
+  email: string | null;
+  adresse: string | null;
+  notes: string | null;
+  ordreAffichage: number;
+  actif: boolean;
+};
+
+export type PackagingArticle = {
+  id: string;
+  nom: string;
+  slug: string;
+  categorie: string;
+  description: string;
+  images: ProdImage[];
+  specifications: string | null;
+  fournisseurId: string | null;
+  disponibleAchat: boolean;
+  prixAchat: string | null;
+  disponibleLocation: boolean;
+  prixLocation: string | null;
+  miseEnAvant: boolean;
+  ordreAffichage: number;
+  actif: boolean;
+  dateCreation: string;
+  dateModification: string;
+};
+
+export type PackagingProcessStep = {
+  id: string;
+  titre: string;
+  description: string;
+  ordreAffichage: number;
+  actif: boolean;
+};
+
 export type Partner = {
   id: string;
   nom: string;

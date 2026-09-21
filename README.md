@@ -28,6 +28,9 @@ Rendez-vous sur `/admin`, connectez-vous avec `ADMIN_PASSWORD`. Vous pouvez y g�
 - **Coordonnées CAPEN** (WhatsApp, e-mail, téléphone, adresse, réseaux sociaux)
 - **Productions** (banane, manioc) : description, statut, photos
 - **Produits** (ex. bâtons de manioc) : fiches, formats, prix, photos, création/suppression
+- **Articles de packaging** (achat et/ou location) : fiches, tarifs, fournisseur associé, photos
+- **Fournisseurs de packaging** (usage interne, jamais affiché sur le site public) : coordonnées et spécialité
+- **Étapes du process Packaging** : titre, description, ordre d'affichage
 - **Actualités** : création, édition, publication/dépublication, galerie
 - **Galerie** (« CAPEN sur le terrain ») : ajout/suppression de photos
 - **Partenaires** : ajout/suppression, logo

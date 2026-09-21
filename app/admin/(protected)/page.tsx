@@ -1,19 +1,36 @@
 import Link from "next/link";
-import { getProductions, getProducts, getNews, getPartners, getGallery, getSiteInfo } from "@/lib/data";
+import {
+  getProductions,
+  getProducts,
+  getPackagingSuppliers,
+  getPackagingArticles,
+  getPackagingProcessSteps,
+  getNews,
+  getPartners,
+  getGallery,
+  getSiteInfo,
+} from "@/lib/data";
 
 export default async function AdminDashboardPage() {
-  const [productions, products, news, partners, gallery, siteInfo] = await Promise.all([
-    getProductions(),
-    getProducts(),
-    getNews(),
-    getPartners(),
-    getGallery(),
-    getSiteInfo(),
-  ]);
+  const [productions, products, packagingSuppliers, packagingArticles, packagingProcessSteps, news, partners, gallery, siteInfo] =
+    await Promise.all([
+      getProductions(),
+      getProducts(),
+      getPackagingSuppliers(),
+      getPackagingArticles(),
+      getPackagingProcessSteps(),
+      getNews(),
+      getPartners(),
+      getGallery(),
+      getSiteInfo(),
+    ]);
 
   const cards = [
     { label: "Productions", value: productions.length, href: "/admin/productions" },
     { label: "Produits", value: products.length, href: "/admin/products" },
+    { label: "Fournisseurs (Packaging)", value: packagingSuppliers.length, href: "/admin/packaging-suppliers" },
+    { label: "Articles de packaging", value: packagingArticles.length, href: "/admin/packaging-articles" },
+    { label: "Étapes du process (Packaging)", value: packagingProcessSteps.length, href: "/admin/packaging-process" },
     { label: "Actualités publiées", value: news.filter((n) => n.publie).length, href: "/admin/news" },
     { label: "Photos en galerie", value: gallery.length, href: "/admin/gallery" },
     { label: "Partenaires", value: partners.length, href: "/admin/partners" },

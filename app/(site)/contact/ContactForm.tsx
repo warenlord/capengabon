@@ -10,6 +10,7 @@ const INTENTS = [
   { value: "achat", label: "Acheter des produits" },
   { value: "batons-manioc", label: "Commander des bâtons de manioc" },
   { value: "production-specifique", label: "Demander une production spécifique" },
+  { value: "packaging", label: "Acheter ou louer du matériel de packaging" },
   { value: "rejoindre", label: "Rejoindre CAPEN" },
   { value: "partenariat", label: "Proposer un partenariat" },
   { value: "information", label: "Obtenir des informations" },

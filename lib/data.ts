@@ -4,6 +4,9 @@ import { CONTENT_DIR, SEED_CONTENT_DIR, SUBMISSIONS_DIR, IS_EXTERNAL_STORAGE } f
 import type {
   Production,
   Product,
+  PackagingSupplier,
+  PackagingArticle,
+  PackagingProcessStep,
   NewsItem,
   Partner,
   GalleryImage,
@@ -107,6 +110,138 @@ export async function upsertProduct(product: Partial<Product> & { id?: string })
 export async function deleteProduct(id: string): Promise<void> {
   const items = await getProducts();
   await saveProducts(items.filter((p) => p.id !== id));
+}
+
+// ---------- Packaging Suppliers (fournisseurs, usage admin uniquement) ----------
+export async function getPackagingSuppliers(): Promise<PackagingSupplier[]> {
+  const items = await readJson<PackagingSupplier[]>("packaging-suppliers.json");
+  return items.sort((a, b) => a.ordreAffichage - b.ordreAffichage);
+}
+export async function getActivePackagingSuppliers(): Promise<PackagingSupplier[]> {
+  return (await getPackagingSuppliers()).filter((s) => s.actif);
+}
+export async function savePackagingSuppliers(items: PackagingSupplier[]): Promise<void> {
+  await writeJson("packaging-suppliers.json", items);
+}
+export async function upsertPackagingSupplier(
+  item: Partial<PackagingSupplier> & { id?: string }
+): Promise<void> {
+  const items = await getPackagingSuppliers();
+  if (item.id) {
+    const idx = items.findIndex((s) => s.id === item.id);
+    if (idx >= 0) items[idx] = { ...items[idx], ...item } as PackagingSupplier;
+  } else {
+    items.push({
+      id: newId("fournisseur"),
+      nom: "",
+      specialite: null,
+      contact: null,
+      telephone: null,
+      email: null,
+      adresse: null,
+      notes: null,
+      ordreAffichage: items.length + 1,
+      actif: true,
+      ...item,
+    } as PackagingSupplier);
+  }
+  await savePackagingSuppliers(items);
+}
+export async function deletePackagingSupplier(id: string): Promise<void> {
+  const items = await getPackagingSuppliers();
+  await savePackagingSuppliers(items.filter((s) => s.id !== id));
+
+  const articles = await getPackagingArticles();
+  const updated = articles.map((a) => (a.fournisseurId === id ? { ...a, fournisseurId: null } : a));
+  if (updated.some((a, i) => a !== articles[i])) await savePackagingArticles(updated);
+}
+
+// ---------- Packaging Articles ----------
+export async function getPackagingArticles(): Promise<PackagingArticle[]> {
+  const items = await readJson<PackagingArticle[]>("packaging-articles.json");
+  return items.sort((a, b) => a.ordreAffichage - b.ordreAffichage);
+}
+export async function getActivePackagingArticles(): Promise<PackagingArticle[]> {
+  return (await getPackagingArticles()).filter((a) => a.actif);
+}
+export async function getPackagingArticleBySlug(slug: string): Promise<PackagingArticle | undefined> {
+  return (await getPackagingArticles()).find((a) => a.slug === slug);
+}
+export async function savePackagingArticles(items: PackagingArticle[]): Promise<void> {
+  await writeJson("packaging-articles.json", items);
+}
+export async function upsertPackagingArticle(
+  article: Partial<PackagingArticle> & { id?: string }
+): Promise<void> {
+  const items = await getPackagingArticles();
+  const now = new Date().toISOString();
+  if (article.id) {
+    const idx = items.findIndex((a) => a.id === article.id);
+    if (idx >= 0) {
+      items[idx] = { ...items[idx], ...article, dateModification: now } as PackagingArticle;
+    }
+  } else {
+    items.push({
+      id: newId("article"),
+      nom: "",
+      slug: "",
+      categorie: "",
+      description: "",
+      images: [],
+      specifications: null,
+      fournisseurId: null,
+      disponibleAchat: false,
+      prixAchat: null,
+      disponibleLocation: false,
+      prixLocation: null,
+      miseEnAvant: false,
+      ordreAffichage: items.length + 1,
+      actif: true,
+      dateCreation: now,
+      dateModification: now,
+      ...article,
+    } as PackagingArticle);
+  }
+  await savePackagingArticles(items);
+}
+export async function deletePackagingArticle(id: string): Promise<void> {
+  const items = await getPackagingArticles();
+  await savePackagingArticles(items.filter((a) => a.id !== id));
+}
+
+// ---------- Packaging Process Steps ----------
+export async function getPackagingProcessSteps(): Promise<PackagingProcessStep[]> {
+  const items = await readJson<PackagingProcessStep[]>("packaging-process.json");
+  return items.sort((a, b) => a.ordreAffichage - b.ordreAffichage);
+}
+export async function getActivePackagingProcessSteps(): Promise<PackagingProcessStep[]> {
+  return (await getPackagingProcessSteps()).filter((s) => s.actif);
+}
+export async function savePackagingProcessSteps(items: PackagingProcessStep[]): Promise<void> {
+  await writeJson("packaging-process.json", items);
+}
+export async function upsertPackagingProcessStep(
+  item: Partial<PackagingProcessStep> & { id?: string }
+): Promise<void> {
+  const items = await getPackagingProcessSteps();
+  if (item.id) {
+    const idx = items.findIndex((s) => s.id === item.id);
+    if (idx >= 0) items[idx] = { ...items[idx], ...item } as PackagingProcessStep;
+  } else {
+    items.push({
+      id: newId("etape"),
+      titre: "",
+      description: "",
+      ordreAffichage: items.length + 1,
+      actif: true,
+      ...item,
+    } as PackagingProcessStep);
+  }
+  await savePackagingProcessSteps(items);
+}
+export async function deletePackagingProcessStep(id: string): Promise<void> {
+  const items = await getPackagingProcessSteps();
+  await savePackagingProcessSteps(items.filter((s) => s.id !== id));
 }
 
 // ---------- News ----------
