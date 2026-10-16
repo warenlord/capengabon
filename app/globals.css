@@ -67,7 +67,7 @@ body {
   }
 
   .btn-whatsapp {
-    @apply btn bg-[#25D366] text-white shadow-card hover:bg-[#1fb959] hover:shadow-cardHover;
+    @apply btn bg-capen-green-500 text-capen-ink shadow-card hover:bg-capen-green-400 hover:shadow-cardHover;
   }
 
   .btn-earth {
