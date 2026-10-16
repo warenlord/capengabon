@@ -92,6 +92,24 @@ export default async function ProductDetailPage({
           </Reveal>
         </div>
 
+        <Reveal delay={150} className="mt-16">
+          <div className="flex flex-col items-start justify-between gap-5 rounded-card bg-capen-earth-50 p-7 ring-1 ring-capen-earth-200 sm:flex-row sm:items-center">
+            <div>
+              <h2 className="font-display text-xl font-semibold text-capen-ink">
+                Besoin de plus grandes quantités ?
+              </h2>
+              <p className="mt-2 max-w-xl text-sm leading-relaxed text-capen-ink/70">
+                Entreprise, restaurant, revendeur ou besoin régulier au-delà de nos capacités
+                habituelles : contactez notre équipe pour étudier une solution adaptée à votre
+                volume.
+              </p>
+            </div>
+            <Link href="/contact?intent=commande-volume" className="btn-primary shrink-0">
+              Discuter de ma commande
+            </Link>
+          </div>
+        </Reveal>
+
         {product.images.length > 1 && (
           <div className="mt-16">
             <p className="eyebrow">Galerie</p>

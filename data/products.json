@@ -4,7 +4,7 @@
     "nom": "Sacs de tubercules",
     "slug": "sacs-de-tubercules",
     "categorie": "Tubercules",
-    "description": "Chaque samedi, CAPEN met en vente un nombre limité de sacs de tubercules de manioc, récoltés sur nos parcelles. Une occasion de vous approvisionner directement auprès de notre coopérative, en quantité limitée et au fur et à mesure des récoltes.",
+    "description": "Chaque samedi, CAPEN met en vente un nombre limité de sacs de tubercules de manioc, récoltés sur nos parcelles. Une occasion de vous approvisionner directement auprès de notre coopérative, en quantité limitée et au fur et à mesure des récoltes. Récupération des sacs à Bikélé Nzong.",
     "images": [
       { "src": "/images/productions/manioc/recolte-pile-01.jpg", "alt": "Tubercules de manioc fraîchement récoltés, prêts à être mis en sac" },
       { "src": "/images/productions/manioc/recolte-pile-02.jpg", "alt": "Tas de tubercules de manioc récoltés par l'équipe CAPEN" }
@@ -12,13 +12,13 @@
     "format": null,
     "poids": null,
     "conditionnement": "Sac",
-    "disponibilite": "5 sacs disponibles chaque samedi — réservation conseillée",
+    "disponibilite": "5 sacs disponibles chaque samedi — récupération à Bikélé Nzong, réservation conseillée",
     "prix": "30 000 FCFA le sac",
     "miseEnAvant": true,
     "ordreAffichage": 1,
     "actif": true,
     "dateCreation": "2026-10-16T00:00:00.000Z",
-    "dateModification": "2026-10-16T00:00:00.000Z"
+    "dateModification": "2026-10-19T00:00:00.000Z"
   },
   {
     "id": "prod-batons-manioc",
