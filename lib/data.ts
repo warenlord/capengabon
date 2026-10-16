@@ -47,6 +47,20 @@ function newId(prefix: string): string {
   return `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
 }
 
+/** Entries created before the missing-id fix have no id: assign one and persist it. */
+async function readListWithIds<T>(file: string, prefix: string): Promise<T[]> {
+  const items = await readJson<T[]>(file);
+  let changed = false;
+  for (const item of items as { id?: string }[]) {
+    if (!item.id) {
+      item.id = newId(prefix);
+      changed = true;
+    }
+  }
+  if (changed) await writeJson(file, items);
+  return items;
+}
+
 // ---------- Productions ----------
 export async function getProductions(): Promise<Production[]> {
   const items = await readJson<Production[]>("productions.json");
@@ -64,7 +78,7 @@ export async function saveProductions(items: Production[]): Promise<void> {
 
 // ---------- Products ----------
 export async function getProducts(): Promise<Product[]> {
-  const items = await readJson<Product[]>("products.json");
+  const items = await readListWithIds<Product>("products.json", "prod");
   return items.sort((a, b) => a.ordreAffichage - b.ordreAffichage);
 }
 export async function getActiveProducts(): Promise<Product[]> {
@@ -86,7 +100,6 @@ export async function upsertProduct(product: Partial<Product> & { id?: string })
     }
   } else {
     items.push({
-      id: newId("prod"),
       nom: "",
       slug: "",
       categorie: "",
@@ -103,6 +116,7 @@ export async function upsertProduct(product: Partial<Product> & { id?: string })
       dateCreation: now,
       dateModification: now,
       ...product,
+      id: newId("prod"),
     } as Product);
   }
   await saveProducts(items);
@@ -114,7 +128,7 @@ export async function deleteProduct(id: string): Promise<void> {
 
 // ---------- Packaging Suppliers (fournisseurs, usage admin uniquement) ----------
 export async function getPackagingSuppliers(): Promise<PackagingSupplier[]> {
-  const items = await readJson<PackagingSupplier[]>("packaging-suppliers.json");
+  const items = await readListWithIds<PackagingSupplier>("packaging-suppliers.json", "fournisseur");
   return items.sort((a, b) => a.ordreAffichage - b.ordreAffichage);
 }
 export async function getActivePackagingSuppliers(): Promise<PackagingSupplier[]> {
@@ -132,7 +146,6 @@ export async function upsertPackagingSupplier(
     if (idx >= 0) items[idx] = { ...items[idx], ...item } as PackagingSupplier;
   } else {
     items.push({
-      id: newId("fournisseur"),
       nom: "",
       specialite: null,
       contact: null,
@@ -143,6 +156,7 @@ export async function upsertPackagingSupplier(
       ordreAffichage: items.length + 1,
       actif: true,
       ...item,
+      id: newId("fournisseur"),
     } as PackagingSupplier);
   }
   await savePackagingSuppliers(items);
@@ -158,7 +172,7 @@ export async function deletePackagingSupplier(id: string): Promise<void> {
 
 // ---------- Packaging Articles ----------
 export async function getPackagingArticles(): Promise<PackagingArticle[]> {
-  const items = await readJson<PackagingArticle[]>("packaging-articles.json");
+  const items = await readListWithIds<PackagingArticle>("packaging-articles.json", "article");
   return items.sort((a, b) => a.ordreAffichage - b.ordreAffichage);
 }
 export async function getActivePackagingArticles(): Promise<PackagingArticle[]> {
@@ -182,7 +196,6 @@ export async function upsertPackagingArticle(
     }
   } else {
     items.push({
-      id: newId("article"),
       nom: "",
       slug: "",
       categorie: "",
@@ -200,6 +213,7 @@ export async function upsertPackagingArticle(
       dateCreation: now,
       dateModification: now,
       ...article,
+      id: newId("article"),
     } as PackagingArticle);
   }
   await savePackagingArticles(items);
@@ -211,7 +225,7 @@ export async function deletePackagingArticle(id: string): Promise<void> {
 
 // ---------- Packaging Process Steps ----------
 export async function getPackagingProcessSteps(): Promise<PackagingProcessStep[]> {
-  const items = await readJson<PackagingProcessStep[]>("packaging-process.json");
+  const items = await readListWithIds<PackagingProcessStep>("packaging-process.json", "etape");
   return items.sort((a, b) => a.ordreAffichage - b.ordreAffichage);
 }
 export async function getActivePackagingProcessSteps(): Promise<PackagingProcessStep[]> {
@@ -229,12 +243,12 @@ export async function upsertPackagingProcessStep(
     if (idx >= 0) items[idx] = { ...items[idx], ...item } as PackagingProcessStep;
   } else {
     items.push({
-      id: newId("etape"),
       titre: "",
       description: "",
       ordreAffichage: items.length + 1,
       actif: true,
       ...item,
+      id: newId("etape"),
     } as PackagingProcessStep);
   }
   await savePackagingProcessSteps(items);
@@ -246,7 +260,7 @@ export async function deletePackagingProcessStep(id: string): Promise<void> {
 
 // ---------- News ----------
 export async function getNews(): Promise<NewsItem[]> {
-  const items = await readJson<NewsItem[]>("news.json");
+  const items = await readListWithIds<NewsItem>("news.json", "news");
   return items.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 export async function getPublishedNews(): Promise<NewsItem[]> {
@@ -265,7 +279,6 @@ export async function upsertNews(item: Partial<NewsItem> & { id?: string }): Pro
     if (idx >= 0) items[idx] = { ...items[idx], ...item } as NewsItem;
   } else {
     items.push({
-      id: newId("news"),
       slug: newId("actualite"),
       titre: "",
       date: new Date().toISOString(),
@@ -276,6 +289,7 @@ export async function upsertNews(item: Partial<NewsItem> & { id?: string }): Pro
       categorie: "Coopérative",
       publie: false,
       ...item,
+      id: newId("news"),
     } as NewsItem);
   }
   await saveNews(items);
@@ -287,7 +301,7 @@ export async function deleteNews(id: string): Promise<void> {
 
 // ---------- Partners ----------
 export async function getPartners(): Promise<Partner[]> {
-  const items = await readJson<Partner[]>("partners.json");
+  const items = await readListWithIds<Partner>("partners.json", "partner");
   return items.sort((a, b) => a.ordreAffichage - b.ordreAffichage);
 }
 export async function getActivePartners(): Promise<Partner[]> {
@@ -303,7 +317,6 @@ export async function upsertPartner(item: Partial<Partner> & { id?: string }): P
     if (idx >= 0) items[idx] = { ...items[idx], ...item } as Partner;
   } else {
     items.push({
-      id: newId("partner"),
       nom: "",
       logo: null,
       siteWeb: null,
@@ -311,6 +324,7 @@ export async function upsertPartner(item: Partial<Partner> & { id?: string }): P
       ordreAffichage: items.length + 1,
       actif: true,
       ...item,
+      id: newId("partner"),
     } as Partner);
   }
   await savePartners(items);
