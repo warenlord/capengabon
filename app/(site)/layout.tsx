@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFloatButton from "@/components/WhatsAppFloatButton";
+import CampaignBanner from "@/components/CampaignBanner";
 import { getSiteInfo } from "@/lib/data";
 
 // The content layer (data/, or a persistent disk in production) is only
@@ -19,6 +20,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
       >
         Aller au contenu principal
       </a>
+      <CampaignBanner />
       <Header />
       <main id="contenu-principal">{children}</main>
       <Footer />

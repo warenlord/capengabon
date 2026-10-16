@@ -16,7 +16,7 @@ export default async function ProductsPreview({ products }: { products: Product[
           <Reveal className="max-w-xl">
             <p className="eyebrow">Nos produits</p>
             <h2 className="mt-3 font-display text-3xl font-semibold leading-tight text-capen-ink sm:text-4xl">
-              Nos bâtons de manioc
+              Nos produits disponibles
             </h2>
           </Reveal>
           <Reveal delay={80}>
