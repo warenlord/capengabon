@@ -8,16 +8,16 @@ const config: Config = {
         // Extracted from the CAPEN logo (leaf green) + earth tones from the field photography
         capen: {
           green: {
-            50: "#F1F7EB",
-            100: "#E1EFD3",
-            200: "#C3DFA8",
-            300: "#9FCB78",
-            400: "#97CF63",
-            500: "#7FC241", // primary — vert exact du logo
-            600: "#487A29",
-            700: "#396122",
-            800: "#2E4D1C",
-            900: "#233A15",
+            50: "#F0FDF4",
+            100: "#DCFCE7",
+            200: "#BBF7D0",
+            300: "#86EFAC",
+            400: "#4ADE80",
+            500: "#25D366", // primary — vert WhatsApp
+            600: "#15803D",
+            700: "#166534",
+            800: "#14532D",
+            900: "#0F3D22",
           },
           earth: {
             50: "#FAF4EC",
