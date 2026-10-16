@@ -11,7 +11,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="w-full rounded-lg bg-capen-green-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-capen-green-700 disabled:opacity-50"
+      className="w-full rounded-lg bg-capen-green-500 px-4 py-2.5 text-sm font-semibold text-capen-ink transition-colors hover:bg-capen-green-400 disabled:opacity-50"
     >
       {pending ? "Connexion…" : "Se connecter"}
     </button>

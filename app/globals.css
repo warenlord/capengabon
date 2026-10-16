@@ -59,7 +59,7 @@ body {
   }
 
   .btn-primary {
-    @apply btn bg-capen-green-600 text-white shadow-card hover:bg-capen-green-700 hover:shadow-cardHover active:bg-capen-green-800;
+    @apply btn bg-capen-green-500 text-capen-ink shadow-card hover:bg-capen-green-400 hover:shadow-cardHover active:bg-capen-green-600;
   }
 
   .btn-secondary {

@@ -121,7 +121,7 @@ export default async function AdminPackagingArticlesPage({
                 </label>
               </div>
               <div className="flex gap-3">
-                <button type="submit" className="rounded-lg bg-capen-green-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-capen-green-700">
+                <button type="submit" className="rounded-lg bg-capen-green-500 px-5 py-2.5 text-sm font-semibold text-capen-ink hover:bg-capen-green-400">
                   Enregistrer
                 </button>
               </div>
@@ -184,7 +184,7 @@ export default async function AdminPackagingArticlesPage({
             <label className={labelClass}>Description</label>
             <textarea name="description" rows={3} className={`${inputClass} resize-none`} />
           </div>
-          <button type="submit" className="rounded-lg bg-capen-green-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-capen-green-700">
+          <button type="submit" className="rounded-lg bg-capen-green-500 px-5 py-2.5 text-sm font-semibold text-capen-ink hover:bg-capen-green-400">
             Créer l&apos;article
           </button>
         </form>

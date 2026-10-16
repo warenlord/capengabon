@@ -58,7 +58,7 @@ function NewsForm({ item }: { item?: NewsItem }) {
         <input type="checkbox" name="publie" defaultChecked={item?.publie} className="h-4 w-4 rounded border-white/30 bg-white/5" />
         Publier sur le site
       </label>
-      <button type="submit" className="rounded-lg bg-capen-green-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-capen-green-700">
+      <button type="submit" className="rounded-lg bg-capen-green-500 px-5 py-2.5 text-sm font-semibold text-capen-ink hover:bg-capen-green-400">
         {item ? "Enregistrer" : "Créer l'actualité"}
       </button>
     </form>

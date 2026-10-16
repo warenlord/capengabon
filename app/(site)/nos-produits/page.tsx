@@ -53,7 +53,7 @@ export default async function NosProduitsPage() {
                         className="object-cover transition-transform duration-500 hover:scale-105"
                       />
                       {product.miseEnAvant && (
-                        <span className="absolute left-4 top-4 rounded-full bg-capen-green-600 px-3 py-1 text-xs font-semibold text-white">
+                        <span className="absolute left-4 top-4 rounded-full bg-capen-green-500 px-3 py-1 text-xs font-semibold text-capen-ink">
                           En avant
                         </span>
                       )}

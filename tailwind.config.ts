@@ -12,8 +12,8 @@ const config: Config = {
             100: "#E1EFD3",
             200: "#C3DFA8",
             300: "#9FCB78",
-            400: "#7CB74F",
-            500: "#5C9A34", // primary
+            400: "#97CF63",
+            500: "#7FC241", // primary — vert exact du logo
             600: "#487A29",
             700: "#396122",
             800: "#2E4D1C",

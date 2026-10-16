@@ -72,7 +72,7 @@ export default async function PackagingPage() {
               {steps.map((step, i) => (
                 <Reveal key={step.id} delay={i * 90}>
                   <div className="relative h-full rounded-card bg-capen-paper p-6 ring-1 ring-capen-ink/10">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-capen-green-600 font-display text-sm font-semibold text-white">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-capen-green-500 font-display text-sm font-semibold text-capen-ink">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <h3 className="mt-4 font-display text-lg font-semibold text-capen-ink">{step.titre}</h3>
@@ -138,7 +138,7 @@ export default async function PackagingPage() {
                           className="object-cover transition-transform duration-500 hover:scale-105"
                         />
                         {article.miseEnAvant && (
-                          <span className="absolute left-4 top-4 rounded-full bg-capen-green-600 px-3 py-1 text-xs font-semibold text-white">
+                          <span className="absolute left-4 top-4 rounded-full bg-capen-green-500 px-3 py-1 text-xs font-semibold text-capen-ink">
                             En avant
                           </span>
                         )}

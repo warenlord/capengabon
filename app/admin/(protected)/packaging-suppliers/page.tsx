@@ -55,7 +55,7 @@ function SupplierForm({ supplier }: { supplier?: PackagingSupplier }) {
         <input type="checkbox" name="actif" defaultChecked={supplier?.actif ?? true} className="h-4 w-4 rounded border-white/30 bg-white/5" />
         Fournisseur actif
       </label>
-      <button type="submit" className="rounded-lg bg-capen-green-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-capen-green-700">
+      <button type="submit" className="rounded-lg bg-capen-green-500 px-5 py-2.5 text-sm font-semibold text-capen-ink hover:bg-capen-green-400">
         {supplier ? "Enregistrer" : "Ajouter le fournisseur"}
       </button>
     </form>

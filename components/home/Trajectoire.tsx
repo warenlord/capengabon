@@ -41,7 +41,7 @@ export default function Trajectoire() {
                 <div className="relative pl-10 sm:pl-12 lg:pl-0 lg:text-center">
                   <span
                     className={`absolute left-0 top-1.5 flex h-8 w-8 items-center justify-center rounded-full ring-4 ring-capen-cream sm:h-9 sm:w-9 lg:static lg:mx-auto lg:mb-5 ${
-                      etape.statut === "actuel" ? "bg-capen-green-600" : "bg-capen-earth-500"
+                      etape.statut === "actuel" ? "bg-capen-green-500" : "bg-capen-earth-500"
                     }`}
                   >
                     <span className="h-2.5 w-2.5 rounded-full bg-white" />
