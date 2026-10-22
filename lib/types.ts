@@ -88,6 +88,15 @@ export type PackagingProcessStep = {
   actif: boolean;
 };
 
+export type Testimonial = {
+  id: string;
+  auteur: string;
+  contexte: string | null;
+  texte: string;
+  ordreAffichage: number;
+  actif: boolean;
+};
+
 export type Partner = {
   id: string;
   nom: string;

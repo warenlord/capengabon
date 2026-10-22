@@ -5,6 +5,7 @@ import {
   getPackagingSuppliers,
   getPackagingArticles,
   getPackagingProcessSteps,
+  getTestimonials,
   getNews,
   getPartners,
   getGallery,
@@ -12,13 +13,14 @@ import {
 } from "@/lib/data";
 
 export default async function AdminDashboardPage() {
-  const [productions, products, packagingSuppliers, packagingArticles, packagingProcessSteps, news, partners, gallery, siteInfo] =
+  const [productions, products, packagingSuppliers, packagingArticles, packagingProcessSteps, testimonials, news, partners, gallery, siteInfo] =
     await Promise.all([
       getProductions(),
       getProducts(),
       getPackagingSuppliers(),
       getPackagingArticles(),
       getPackagingProcessSteps(),
+      getTestimonials(),
       getNews(),
       getPartners(),
       getGallery(),
@@ -31,6 +33,7 @@ export default async function AdminDashboardPage() {
     { label: "Fournisseurs (Packaging)", value: packagingSuppliers.length, href: "/admin/packaging-suppliers" },
     { label: "Articles de packaging", value: packagingArticles.length, href: "/admin/packaging-articles" },
     { label: "Étapes du process (Packaging)", value: packagingProcessSteps.length, href: "/admin/packaging-process" },
+    { label: "Témoignages", value: testimonials.length, href: "/admin/testimonials" },
     { label: "Actualités publiées", value: news.filter((n) => n.publie).length, href: "/admin/news" },
     { label: "Photos en galerie", value: gallery.length, href: "/admin/gallery" },
     { label: "Partenaires", value: partners.length, href: "/admin/partners" },

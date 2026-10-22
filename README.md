@@ -31,6 +31,7 @@ Rendez-vous sur `/admin`, connectez-vous avec `ADMIN_PASSWORD`. Vous pouvez y g�
 - **Articles de packaging** (achat et/ou location) : fiches, tarifs, fournisseur associé, photos
 - **Fournisseurs de packaging** (usage interne, jamais affiché sur le site public) : coordonnées et spécialité
 - **Étapes du process Packaging** : titre, description, ordre d'affichage
+- **Témoignages** de clients : affichés en page d'accueil uniquement s'il y en a au moins un
 - **Actualités** : création, édition, publication/dépublication, galerie
 - **Galerie** (« CAPEN sur le terrain ») : ajout/suppression de photos
 - **Partenaires** : ajout/suppression, logo

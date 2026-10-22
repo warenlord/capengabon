@@ -7,6 +7,7 @@ import type {
   PackagingSupplier,
   PackagingArticle,
   PackagingProcessStep,
+  Testimonial,
   NewsItem,
   Partner,
   GalleryImage,
@@ -273,6 +274,40 @@ export async function upsertPackagingProcessStep(
 export async function deletePackagingProcessStep(id: string): Promise<void> {
   const items = await getPackagingProcessSteps();
   await savePackagingProcessSteps(items.filter((s) => s.id !== id));
+}
+
+// ---------- Testimonials ----------
+export async function getTestimonials(): Promise<Testimonial[]> {
+  const items = await readListWithIds<Testimonial>("testimonials.json", "temoignage");
+  return items.sort((a, b) => a.ordreAffichage - b.ordreAffichage);
+}
+export async function getActiveTestimonials(): Promise<Testimonial[]> {
+  return (await getTestimonials()).filter((t) => t.actif);
+}
+export async function saveTestimonials(items: Testimonial[]): Promise<void> {
+  await writeJson("testimonials.json", items);
+}
+export async function upsertTestimonial(item: Partial<Testimonial> & { id?: string }): Promise<void> {
+  const items = await getTestimonials();
+  if (item.id) {
+    const idx = items.findIndex((t) => t.id === item.id);
+    if (idx >= 0) items[idx] = { ...items[idx], ...item } as Testimonial;
+  } else {
+    items.push({
+      auteur: "",
+      contexte: null,
+      texte: "",
+      ordreAffichage: items.length + 1,
+      actif: true,
+      ...item,
+      id: newId("temoignage"),
+    } as Testimonial);
+  }
+  await saveTestimonials(items);
+}
+export async function deleteTestimonial(id: string): Promise<void> {
+  const items = await getTestimonials();
+  await saveTestimonials(items.filter((t) => t.id !== id));
 }
 
 // ---------- News ----------

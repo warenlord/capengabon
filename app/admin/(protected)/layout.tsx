@@ -12,6 +12,7 @@ const NAV = [
   { href: "/admin/packaging-suppliers", label: "Fournisseurs (Packaging)" },
   { href: "/admin/packaging-articles", label: "Articles de packaging" },
   { href: "/admin/packaging-process", label: "Étapes du process (Packaging)" },
+  { href: "/admin/testimonials", label: "Témoignages" },
   { href: "/admin/news", label: "Actualités" },
   { href: "/admin/gallery", label: "Galerie" },
   { href: "/admin/partners", label: "Partenaires" },
