@@ -47,6 +47,15 @@ function newId(prefix: string): string {
   return `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
 }
 
+/** Keeps URLs unambiguous: a slug already used by another entry gets a -2, -3... suffix. */
+function uniqueSlug(slug: string, items: { id: string; slug: string }[], selfId: string): string {
+  if (!slug) return slug;
+  let candidate = slug;
+  let n = 2;
+  while (items.some((i) => i.slug === candidate && i.id !== selfId)) candidate = `${slug}-${n++}`;
+  return candidate;
+}
+
 /** Entries created before the missing-id fix have no id: assign one and persist it. */
 async function readListWithIds<T>(file: string, prefix: string): Promise<T[]> {
   const items = await readJson<T[]>(file);
@@ -96,10 +105,12 @@ export async function upsertProduct(product: Partial<Product> & { id?: string })
   if (product.id) {
     const idx = items.findIndex((p) => p.id === product.id);
     if (idx >= 0) {
-      items[idx] = { ...items[idx], ...product, dateModification: now } as Product;
+      const merged = { ...items[idx], ...product, dateModification: now } as Product;
+      merged.slug = uniqueSlug(merged.slug, items, merged.id);
+      items[idx] = merged;
     }
   } else {
-    items.push({
+    const created = {
       nom: "",
       slug: "",
       categorie: "",
@@ -117,7 +128,9 @@ export async function upsertProduct(product: Partial<Product> & { id?: string })
       dateModification: now,
       ...product,
       id: newId("prod"),
-    } as Product);
+    } as Product;
+    created.slug = uniqueSlug(created.slug, items, created.id);
+    items.push(created);
   }
   await saveProducts(items);
 }
@@ -192,10 +205,12 @@ export async function upsertPackagingArticle(
   if (article.id) {
     const idx = items.findIndex((a) => a.id === article.id);
     if (idx >= 0) {
-      items[idx] = { ...items[idx], ...article, dateModification: now } as PackagingArticle;
+      const merged = { ...items[idx], ...article, dateModification: now } as PackagingArticle;
+      merged.slug = uniqueSlug(merged.slug, items, merged.id);
+      items[idx] = merged;
     }
   } else {
-    items.push({
+    const created = {
       nom: "",
       slug: "",
       categorie: "",
@@ -214,7 +229,9 @@ export async function upsertPackagingArticle(
       dateModification: now,
       ...article,
       id: newId("article"),
-    } as PackagingArticle);
+    } as PackagingArticle;
+    created.slug = uniqueSlug(created.slug, items, created.id);
+    items.push(created);
   }
   await savePackagingArticles(items);
 }

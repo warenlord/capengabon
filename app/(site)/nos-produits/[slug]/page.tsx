@@ -4,8 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import Gallery from "@/components/Gallery";
+import JsonLd from "@/components/JsonLd";
 import { getProductBySlug, getSiteInfo } from "@/lib/data";
+import { SITE_NAME, SITE_URL } from "@/lib/config";
 import { buildWhatsAppLink, productWhatsAppMessage } from "@/lib/whatsapp";
+
+function parsePriceXaf(prix: string | null): string | null {
+  const match = prix?.match(/(\d[\d\s .]*\d|\d)\s*(?:FCFA|F\s?CFA|XAF)/i);
+  return match ? match[1].replace(/[\s .]/g, "") : null;
+}
 
 export async function generateMetadata({
   params,
@@ -15,7 +22,18 @@ export async function generateMetadata({
   const { slug } = await params;
   const product = await getProductBySlug(slug);
   if (!product) return {};
-  return { title: product.nom, description: product.description };
+  return {
+    title: product.nom,
+    description: product.description,
+    openGraph: {
+      type: "website",
+      locale: "fr_FR",
+      siteName: SITE_NAME,
+      title: product.nom,
+      description: product.description,
+      images: product.images[0] ? [{ url: product.images[0].src, alt: product.images[0].alt }] : undefined,
+    },
+  };
 }
 
 export default async function ProductDetailPage({
@@ -40,8 +58,32 @@ export default async function ProductDetailPage({
     { label: "Prix", value: product.prix },
   ].filter((s) => s.value);
 
+  const priceXaf = parsePriceXaf(product.prix);
+  const productUrl = `${SITE_URL}/nos-produits/${product.slug}`;
+
   return (
     <section className="section-y bg-capen-paper">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Product",
+          name: product.nom,
+          description: product.description,
+          category: product.categorie,
+          url: productUrl,
+          image: product.images.map((img) => `${SITE_URL}${img.src}`),
+          brand: { "@type": "Brand", name: SITE_NAME },
+          ...(priceXaf && {
+            offers: {
+              "@type": "Offer",
+              price: priceXaf,
+              priceCurrency: "XAF",
+              url: productUrl,
+              seller: { "@type": "Organization", name: SITE_NAME },
+            },
+          }),
+        }}
+      />
       <div className="container-capen">
         <nav className="text-sm text-capen-ink/65">
           <Link href="/nos-produits" className="hover:text-capen-green-700">Nos produits</Link>
@@ -68,6 +110,9 @@ export default async function ProductDetailPage({
             <h1 className="mt-2 font-display text-3xl font-semibold text-capen-ink sm:text-4xl">
               {product.nom}
             </h1>
+            {product.prix && (
+              <p className="mt-3 font-display text-3xl font-semibold text-capen-green-700">{product.prix}</p>
+            )}
             <p className="mt-5 text-[17px] leading-relaxed text-capen-ink/75">{product.description}</p>
 
             {specs.length > 0 && (

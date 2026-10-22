@@ -8,7 +8,7 @@ export const DEFAULT_WHATSAPP_MESSAGE =
   "Bonjour CAPEN, je vous contacte depuis votre site internet et je souhaiterais obtenir des informations.";
 
 export function productWhatsAppMessage(productName: string): string {
-  return `Bonjour CAPEN, je vous contacte depuis votre site. Je suis intéressé(e) par ${productName} et je souhaiterais connaître sa disponibilité.`;
+  return `Bonjour CAPEN, je vous contacte depuis votre site. Je souhaite commander : ${productName}.\nQuantité souhaitée : \nPouvez-vous me confirmer la disponibilité et les modalités de récupération ?`;
 }
 
 export function packagingArticleWhatsAppMessage(articleName: string): string {

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import Gallery from "@/components/Gallery";
 import { getPackagingArticleBySlug, getSiteInfo } from "@/lib/data";
+import { SITE_NAME } from "@/lib/config";
 import { buildWhatsAppLink, packagingArticleWhatsAppMessage } from "@/lib/whatsapp";
 
 export async function generateMetadata({
@@ -15,7 +16,18 @@ export async function generateMetadata({
   const { slug } = await params;
   const article = await getPackagingArticleBySlug(slug);
   if (!article) return {};
-  return { title: article.nom, description: article.description };
+  return {
+    title: article.nom,
+    description: article.description,
+    openGraph: {
+      type: "website",
+      locale: "fr_FR",
+      siteName: SITE_NAME,
+      title: article.nom,
+      description: article.description,
+      images: article.images[0] ? [{ url: article.images[0].src, alt: article.images[0].alt }] : undefined,
+    },
+  };
 }
 
 export default async function PackagingArticleDetailPage({
